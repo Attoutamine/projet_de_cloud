@@ -7,3 +7,6 @@ Blog Article: [Very simple add, edit, delete, view in PHP & MySQL](http://blog.c
 
 SQL script to create database and tables is present in **database.sql** file.
 
+To run the simple on docker containers use:
+**docker-compose up**
+
