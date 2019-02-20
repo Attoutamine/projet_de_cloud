@@ -9,10 +9,11 @@ if(isset($_POST['update']))
 	
 	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
 	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
+	$adress = mysqli_real_escape_string($mysqli, $_POST['adress']);
 	$email = mysqli_real_escape_string($mysqli, $_POST['email']);	
 	
 	// checking empty fields
-	if(empty($name) || empty($age) || empty($email)) {	
+	if(empty($name) || empty($age) || empty($adress) || empty($email)) {	
 			
 		if(empty($name)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
@@ -21,13 +22,15 @@ if(isset($_POST['update']))
 		if(empty($age)) {
 			echo "<font color='red'>Age field is empty.</font><br/>";
 		}
-		
+		if(empty($adress)) {
+			echo "<font color='red'>Email field is empty.</font><br/>";
+		}	
 		if(empty($email)) {
 			echo "<font color='red'>Email field is empty.</font><br/>";
 		}		
 	} else {	
 		//updating the table
-		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
+		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',adress='$adress',email='$email' WHERE id=$id");
 		
 		//redirectig to the display page. In our case, it is index.php
 		header("Location: index.php");
@@ -45,6 +48,7 @@ while($res = mysqli_fetch_array($result))
 {
 	$name = $res['name'];
 	$age = $res['age'];
+	$adress = $res['adress'];
 	$email = $res['email'];
 }
 ?>
@@ -66,6 +70,10 @@ while($res = mysqli_fetch_array($result))
 			<tr> 
 				<td>Age</td>
 				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
+			</tr>
+			<tr> 
+				<td>Adresse</td>
+				<td><input type="text" name="adress" value="<?php echo $adress;?>"></td>
 			</tr>
 			<tr> 
 				<td>Email</td>
